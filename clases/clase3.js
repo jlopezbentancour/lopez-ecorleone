@@ -2,6 +2,8 @@
 
 //--Valores FALSY "", 0, NaN, undefined, null
 let number1 = 40;
+
+
 /*;
 if (number1 < 30) {
   console.log("el numero es menor a 30");
