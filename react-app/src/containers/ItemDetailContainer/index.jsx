@@ -1,32 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import ItemDetail from '../../components/ItemDetail'
+import {useParams} from 'react-router-dom'
 
 const ItemDetailContainer = () => {
   
-const [productDetail, setProductDetail] = useState({})
+const [characterDetail, setCharacterDetail] = useState({})
 
+const {characterId} = useParams()
 
+//console.log(characterId)
 
 
 useEffect(()=> {
-    const getProducts = async () => {
+    const getCharacters = async () => {
         try {
-            const response = await fetch('https://fakestoreapi.com/products/1')
+           
+            const response = await fetch(`https://rickandmortyapi.com/api/character/${characterId}`)
             const data = await response.json();
-            setProductDetail(data);
-
+            setCharacterDetail(data);
+      
         } catch (error) {
             console.log(error)
         }
     }
-    getProducts()
-}, [])
+    getCharacters()
+}, [characterId])
     
   
   
   
     return (
-    <ItemDetail product={productDetail}/>
+    <ItemDetail character={characterDetail}/>
   )
 }
 

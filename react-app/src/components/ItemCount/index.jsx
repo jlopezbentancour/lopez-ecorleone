@@ -40,11 +40,12 @@ useEffect (() => {
 }, [count]);   */
 
     return (
-    <div>
+    <div className='contador'>
         
-        <button disabled={count <= 1} onClick={handleDecrement}>-</button>
-        <h2>{count}</h2>
         <button onClick={handleAdd}>+</button>
+        <h2>{count}</h2>
+        <button disabled={count <= 1} onClick={handleDecrement}>-</button>
+        
       <div><button onClick={addCart}>Agregar al carrito</button></div>
     </div>
   )

@@ -1,15 +1,25 @@
 import React from 'react'
 import Item from '../Item'
 
-const ItemList = ({products}) => {
+const ItemList = ({characters}) => {
   return (
    
-   
-   <div className='row'>
-        {products.map(product => {
-           return <Item key={product.id} product={product}/>
-        })}
-    </div>
+  <div className="container">
+  <div className="row">
+  {characters.map((character) => {
+    return(
+      <div className="col-md-4" key={character.id}>
+     <Item character={character}/>
+      </div>
+    )
+  })}
+
+
+
+  </div>
+
+
+  </div>
   )
 }
 
