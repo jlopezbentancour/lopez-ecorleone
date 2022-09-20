@@ -11,7 +11,7 @@ const Item = ({character}) => {
 const navigate = useNavigate();
 
 const handleNavigate = () => {
-  navigate(`detail/${character.id}`)
+  navigate(`/detail/${character.id}`)
 }
 
 
