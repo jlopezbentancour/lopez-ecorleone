@@ -1,9 +1,26 @@
 import React from 'react'
+import { Shop } from '../../context/ShopProvider';
+import { useContext } from 'react';
 
-const Cart = () => {
+
+
+const CartContainer = ({character}) => {
+  const {clearCart, removeItem} = useContext(Shop)
+
+  
+
   return (
-   <div>Cart</div>
+    <>
+    
+    <button onClick={clearCart}>Limpialo</button>
+    <button onClick={removeItem}></button>
+    
+    
+    
+    </> 
   )
+
+
 }
 
-export default Cart
+export default CartContainer

@@ -15,7 +15,7 @@ const [characters, setCharacters] = useState([])
 
 const {resultsId} = useParams();
 
-console.log(resultsId)
+
 
 
 
@@ -35,7 +35,7 @@ try {
     setCharacters(data.results)
 
   }
-  
+
 
 } catch (error) {
   console.log(error)

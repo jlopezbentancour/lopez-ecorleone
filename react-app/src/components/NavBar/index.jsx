@@ -5,6 +5,7 @@ import CartWidget from '../CartWidget'
 import Select from '../Select'
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
+
 const NavBar = () => {
   
   const [navColor, setNavColor] = useState("#000000")
@@ -17,7 +18,7 @@ const NavBar = () => {
   }
    
 
-  console.log(navColor);
+  
 
   return (
    <>
@@ -46,6 +47,7 @@ const NavBar = () => {
         </li>
     </ul>   
      <CartWidget/>
+     
      <Select handleColor={onChangeColor}/>
   </nav>
 

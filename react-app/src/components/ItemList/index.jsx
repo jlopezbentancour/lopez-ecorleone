@@ -11,15 +11,9 @@ const ItemList = ({characters}) => {
       <div className="col-md-4" key={character.id}>
      <Item character={character}/>
       </div>
-    )
-  })}
-
-
-
-  </div>
-
-
-  </div>
+      )}) }
+</div>
+ </div>
   )
 }
 
