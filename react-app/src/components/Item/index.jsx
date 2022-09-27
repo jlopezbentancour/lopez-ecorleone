@@ -3,15 +3,15 @@ import React from 'react'
 import './styles.css' 
 import {useNavigate} from 'react-router-dom'
 
-//import Card from 'react-bootstrap/Card';
+import Card from 'react-bootstrap/Card';
 
 
-const Item = ({character}) => {
+const Item = ({product}) => {
 
 const navigate = useNavigate();
 
 const handleNavigate = () => {
-  navigate(`/detail/${character.id}`)
+  navigate(`/detail/${product.id}`)
 }
 
 
@@ -21,12 +21,18 @@ const handleNavigate = () => {
 
   return (
   
-<div className="text-center p-5" onClick={handleNavigate}>
-<h3>{character.name}</h3>
-<img className='img-fluid rounded-pill' src={character.image} alt={character.name} />
-<p>{character.origin.name}</p>
-<button>Ver mas</button>
-</div>
+<Card>
+      <Card.Img variant="top" src={product.image} height="600px"  style={{objectFit: 'cover'}} />
+      <Card.Body className='d-flex flex-column'>
+        <Card.Title className='d-flex justify-content-between align-items-baseline mb-4'>
+          <span className='titulor fs-2'>{product.title}</span>
+          <span className='ms-2 text-muted'>${product.price}</span>
+        </Card.Title>
+        
+       
+        <button onClick={handleNavigate}>Ver mas</button>
+      </Card.Body>
+    </Card>
 
     
     

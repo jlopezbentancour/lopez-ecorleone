@@ -14,12 +14,12 @@ const addItem = (item) => {
   const existe = isInCart(item.id)
   
 if(existe) {
-const cartModified = cart.map(character => {
-  if(character.id === item.id){
-   character.quantity += item.quantity
-   return character
+const cartModified = cart.map(product => {
+  if(product.id === item.id){
+   product.quantity += item.quantity
+   return product
   }
-  return character 
+  return product 
 })
 
 setCart(cartModified)
@@ -33,23 +33,29 @@ setCart(cartModified)
 }
 
 const isInCart = (id) =>{
-  return cart.some(character => character.id === id)
+  return cart.some(product => product.id === id)
 }
 
 const removeItem = (id) => {
-setCart(cart.filter(character => character.id !== id))
+setCart(cart.filter(product => product.id !== id))
 }
 
 const clearCart = () => {
   setCart([])
 }
 
+const totalPrice = () => {
+  return cart.reduce((prev, act)=> prev + act.quantity * act.price, 0)
+}
+
+const totalProducts = () => cart.reduce((acumulador, productoActual) => acumulador + productoActual.quantity, 0)
+
 
 
 
     return (
     
-    <Shop.Provider value={{cart, addItem, clearCart, removeItem}}>
+    <Shop.Provider value={{cart, addItem, clearCart, removeItem, totalPrice, totalProducts}}>
         {children}
     </Shop.Provider>
   )

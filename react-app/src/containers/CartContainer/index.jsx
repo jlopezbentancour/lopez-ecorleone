@@ -1,26 +1,36 @@
 import React from 'react'
-import { Shop } from '../../context/ShopProvider';
-import { useContext } from 'react';
+import { useContext } from 'react'
+import {Shop} from '../../context/ShopProvider'
+import {Link} from 'react-router-dom'
+import ItemCart from '../../components/ItemCart'
+import './styles.css'
 
-
-
-const CartContainer = ({character}) => {
-  const {clearCart, removeItem} = useContext(Shop)
-
+const Cart = (product) => {
   
-
+  const {cart, totalPrice, clearCart} = useContext(Shop)
+  
+  
+  if(cart.length === 0) {
+    return(
+      <>
+      <p>No hay nada</p>
+      <Link to="/">Comprar</Link>
+      </>
+    )
+  }
+  
   return (
-    <>
-    
-    <button onClick={clearCart}>Limpialo</button>
-    <button onClick={removeItem}></button>
-    
-    
-    
-    </> 
+ <>
+ {cart.map(product => <ItemCart key={product.id} product={product}/>)}
+ <div className='botones'>
+ <p>total: ${totalPrice()}</p>
+ <button onClick={() => clearCart(product.id)}>Limpiar Carrito</button>
+ <button>Terminar Compra</button>
+ </div>
+
+ </>
+   
   )
-
-
 }
 
-export default CartContainer
+export default Cart

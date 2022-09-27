@@ -32,19 +32,18 @@ const NavBar = () => {
       <li>
         <Link to="/">Home</Link>
         </li>
-      <li>
-        <Link to="/results/male">Male</Link>
-        </li>
-      <li>
-        <Link to="/results/female">Female</Link>
-        </li>
-      <li>
-        <Link to="/results/genderless">Genderless</Link>
-        </li>
-        <li> 
-          <Link to="/results/unknown">Unknown
-          </Link>
-        </li>
+        <li>
+                <Link to="/category/men's clothing">Men's clothing</Link>
+            </li>
+            <li>
+                <Link to="/category/women's clothing">Women's clothing</Link>
+            </li>
+            <li>
+                <Link to="/category/electronics">Electronics</Link>
+            </li>
+            <li>
+                <Link to="/category/jewelery">Jewelery</Link>
+            </li>
     </ul>   
      <CartWidget/>
      

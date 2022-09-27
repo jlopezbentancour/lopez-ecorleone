@@ -1,37 +1,34 @@
-import React, { useEffect, useState } from 'react'
-import ItemDetail from '../../components/ItemDetail'
-import {useParams} from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import ItemDetail from "../../components/ItemDetail";
+import {useParams} from 'react-router-dom';
 
 const ItemDetailContainer = () => {
-  
-const [characterDetail, setCharacterDetail] = useState({})
+    const [productDetail, setProductDetail] = useState({})
 
-const {characterId} = useParams()
+    const {productId} = useParams();
 
-//console.log(characterId)
-
-
-useEffect(()=> {
-    const getCharacters = async () => {
-        try {
-           
-            const response = await fetch(`https://rickandmortyapi.com/api/character/${characterId}`)
-            const data = await response.json();
-            setCharacterDetail(data);
-      
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    getCharacters()
-}, [characterId])
+   
     
-  
-  
-  
-    return (
-    <ItemDetail character={characterDetail}/>
-  )
-}
+   
+    useEffect(()=> {
 
-export default ItemDetailContainer
+        const getProducts = async () => {
+            try {
+                
+                const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
+                const data = await response.json();
+                setProductDetail(data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getProducts();
+
+    }, [productId])
+
+    console.log(productDetail);
+
+    return <ItemDetail product={productDetail}/>;
+};
+
+export default ItemDetailContainer;
