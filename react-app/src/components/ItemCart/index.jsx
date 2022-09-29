@@ -8,7 +8,6 @@ const ItemCart = ({product}) => {
  
     const {removeItem} = useContext(Shop)
  
- 
     return (
    
    
