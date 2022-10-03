@@ -40,7 +40,7 @@ addItem(productToSave)
         <Card.Text>{product.description}</Card.Text>
         <Card.Text> ${product.price} </Card.Text>
      
-        { !qty ? <ItemCount stock={10} initial={1} onAdd={addCart} /> : <button onClick={handleFinish}>Finalizar Compra</button>}
+        { !qty ? <ItemCount stock={product.stock} initial={1} onAdd={addCart} /> : <button onClick={handleFinish}>Finalizar Compra</button>}
             
       </Card.Body>
     </Card>

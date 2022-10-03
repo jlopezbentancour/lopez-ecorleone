@@ -9,6 +9,10 @@ import Cart from "./containers/CartContainer";
 import ShopProvider from "./context/ShopProvider";
 
 function App() {
+  /* useEffect(()=> {
+    console.log("Se debería ejecutar una sola vez");
+    algoritmoGuardadoAutomático();
+  }, []) */
   return (
     <ShopProvider>
       <BrowserRouter>
