@@ -3,6 +3,7 @@ import {Shop} from '../../context/ShopProvider'
 import './styles.css'
 import { useContext } from 'react'
 
+
 const ItemCart = ({product}) => {
  
  
@@ -15,8 +16,7 @@ const ItemCart = ({product}) => {
     <img src={product.image} alt={product.title} width='100px' />
   <div>
     <p>{product.title}</p>
-    <p>{product.quantity}</p>
-    <p>{product.price}</p>
+    <p>Cantidad: {product.quantity}</p>
     <p>Subtotal: ${product.quantity * product.price}</p>
     <button onClick={() => removeItem(product.id)}>Eliminar</button>
     

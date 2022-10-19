@@ -1,15 +1,4 @@
-.detalles {
-    margin: 2rem auto;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border: solid 3px;
-
-}
-
-.textito {
-    font-size: 0.9rem;
-    color: red;
-}
-
-.textoInformacion {
-    font-size: 2rem;
+.detalle {
+    padding-left: 43rem;
+    margin-top: 3rem;
 }

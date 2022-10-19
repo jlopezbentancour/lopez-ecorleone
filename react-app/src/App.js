@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFound from "./components/NotFound";
 import Cart from "./containers/CartContainer";
 import ShopProvider from "./context/ShopProvider";
+import CheckOut from "./components/CheckOut";
 
 function App() {
   /* useEffect(()=> {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/category/:categoryId" element={<ItemListContainer />} />
           <Route path="/detail/:productId" element={<ItemDetailContainer />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/Checkout" element={<CheckOut />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

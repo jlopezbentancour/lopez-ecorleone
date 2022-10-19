@@ -35,7 +35,7 @@ const addCart = () =>{
         <h2>{count}</h2>
         <button disabled={count <= 1} onClick={handleDecrement}>-</button>
         
-      <div><button onClick={addCart}>Agregar al carrito</button></div>
+      <div className='elbotones'><button onClick={addCart}>Agregar al carrito</button></div>
     </div>
   )
 }

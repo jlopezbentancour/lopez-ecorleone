@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react'
 import ItemCount from '../ItemCount'
 import './styles.css' 
-import Card from 'react-bootstrap/Card';
+
 import {useNavigate} from 'react-router-dom'
 import { Shop } from '../../context/ShopProvider';
 
@@ -32,21 +32,24 @@ addItem(productToSave)
  
  
   return (
-    <div>
-       <Card className='text-center detalles' style={{ width: '18rem' }}>
-      <Card.Img  variant="right" src={product.image} className="foto" />
-      <Card.Body>
-        <Card.Title>{product.title}</Card.Title>
-        <Card.Text>{product.description}</Card.Text>
-        <Card.Text> ${product.price} </Card.Text>
-     
-        { !qty ? <ItemCount stock={product.stock} initial={1} onAdd={addCart} /> : <button onClick={handleFinish}>Finalizar Compra</button>}
-            
-      </Card.Body>
-    </Card>
-
+    <div className='detalle'>
+    <div className="col-md-6 px-5">
+    <h4 className="text-uppercase text-black-50 text-center">{product.category}</h4>
+      <img src={product.image} alt={product.title}
+      height="400px" width="400px" />
+    </div>
+<div className="col-md-6">
+  
+  <h1 className="display-5">{product.title}</h1>
+ <h3 className='display-6 fw-bold my-4'>
+  $ {product.price}
+ </h3>
+ <p className='lead'>{product.description}</p>
+</div>
+{ !qty ? <ItemCount stock={product.stock} initial={1} onAdd={addCart} /> : <button onClick={handleFinish}>Finalizar Compra</button>}
     </div>
   )
 }
 
 export default ItemDetail
+// 

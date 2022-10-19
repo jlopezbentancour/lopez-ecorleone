@@ -1,11 +1,12 @@
 //Funcion para generar la orden
 
-const ordenGenerada = (nombre, email, telefono, cart, total) => {
+const ordenGenerada = (nombre, email, telefono, direccion, cart, total) => {
   return {
     buyer: {
       nombre: nombre,
       email: email,
       telefono: telefono,
+      direccion: direccion,
     },
     items: cart,
     total: total,
