@@ -47,10 +47,9 @@ const irAlCheckout = () => {
 
 
 
-
-
-
-
+const volverAlShop = () => {
+  navigate('/')
+ }
 
 
 
@@ -65,9 +64,10 @@ const irAlCheckout = () => {
 
  <p>total: ${totalPrice()}</p>
 
- <button onClick={() => clearCart(product.id)}>Limpiar Carrito</button>
+ <button className='btn btn-dark' onClick={() => clearCart(product.id)}>Limpiar Carrito</button>
 
- <button onClick={irAlCheckout}>Terminar Compra</button>
+ <button className='btn btn-outline-dark' onClick={irAlCheckout}>Terminar Compra</button>
+ <button className='btn btn-dark' onClick={volverAlShop}>Volver a la tienda</button>
 
  </div>
 

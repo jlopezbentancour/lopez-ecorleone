@@ -20,7 +20,7 @@ const addCart = (quantity) => {
 setQty(quantity)
 }
  
- 
+
  
  const handleFinish = () => {
 const productToSave = {...product, quantity: qty}
@@ -44,9 +44,11 @@ addItem(productToSave)
  <h3 className='display-6 fw-bold my-4'>
   $ {product.price}
  </h3>
- <p className='lead'>{product.description}</p>
+ <p className='lead'> Descripción:<br />{product.description}</p>
+ 
 </div>
-{ !qty ? <ItemCount stock={product.stock} initial={1} onAdd={addCart} /> : <button onClick={handleFinish}>Finalizar Compra</button>}
+{ !qty ? <ItemCount stock={product.stock} initial={1} onAdd={addCart} /> : <button className='btn btn-success' onClick={handleFinish}>Finalizar Compra</button>  }
+
     </div>
   )
 }

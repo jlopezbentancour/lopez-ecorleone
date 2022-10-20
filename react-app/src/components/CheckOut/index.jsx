@@ -156,7 +156,7 @@ return (
       
       </div>
    
-   <div className='col-md-2'> <button type='submit' onClick={handleBuy} className='btn btn-primary'>Porfa Anda</button></div>
+   <div className='col-md-2'> <button type='submit' onClick={handleBuy} className='btn btn-primary'>Confirmar compra</button></div>
   
    
   

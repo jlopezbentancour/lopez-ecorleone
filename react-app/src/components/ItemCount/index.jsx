@@ -29,14 +29,22 @@ const addCart = () =>{
 
 
     return (
-    <div className='contador'>
-        
-        <button onClick={handleAdd}>+</button>
-        <h2>{count}</h2>
-        <button disabled={count <= 1} onClick={handleDecrement}>-</button>
-        
-      <div className='elbotones'><button onClick={addCart}>Agregar al carrito</button></div>
+   <div className="container">
+    <div className="row">
+      <div className="col-lg-2 botonaso">
+      <button className='btn btn-outline-danger' onClick={handleAdd}>+</button>
+      </div>
+      <div className="col-lg-2">
+      <h2>{count}</h2>
+      </div>
+      <div className="col-lg-2 botonaso">
+      <button className='btn btn-outline-danger' disabled={count <= 1} onClick={handleDecrement}>-</button>
+      </div>
+      <div>
+      <button className='elbotones btn btn-outline-success' onClick={addCart}>Agregar al carrito</button>
+      </div>
     </div>
+   </div>
   )
 }
 
