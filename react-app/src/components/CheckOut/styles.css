@@ -3,3 +3,43 @@
     padding-left: 15rem;
 
 }
+
+
+.formuleta {
+    max-width: 500px;
+    margin: 2rem auto;
+    border: 2px solid #E74C3C;
+    padding: 2rem;
+    border-radius: 5px;
+
+}
+
+
+label {
+    display: block;
+    padding: 1rem 0 .25rem;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+
+input {
+    display: block;
+    width: 100%;
+    border: 2px solid #2980B9;
+    padding: .5rem;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.checautero {
+    padding-left: 52rem;
+    padding-top: 7rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.botoncito {
+    margin-top: 1rem;
+}

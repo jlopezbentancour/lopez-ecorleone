@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react';
 import './styles.css' 
 import { collection, addDoc, getDoc } from "firebase/firestore";
 import { db } from '../../firebase/config'
@@ -9,8 +8,8 @@ import { useContext } from 'react'
 import { useNavigate } from "react-router-dom";
 import ordenGenerada from '../../services/generarOrden'
 import Swal from 'sweetalert2'
-
-
+import { useForm } from "react-hook-form";
+import { edadValidator } from "../../services/validator";
 
 
 
@@ -18,17 +17,22 @@ const CheckOut = () => {
 
 const {cart, totalPrice, clearCart} = useContext(Shop)  
 
-const [nombre, setNombre] = useState('');
-const [email, setEmail] = useState('');
-const [telefono, setTelefono] = useState('');
-const [direccion, setDireccion] = useState('')
 
 
 
+const {register, formState: { errors }, handleSubmit, getValues } = useForm({
+  defaultValues:{
+    nombre:'',
+    email:'',
+    telefono:'',
+    direccion:''
 
-const handleSubmit = event => {
- 
-  event.preventDefault();
+  }
+})
+
+
+const onSubmit = (data) => {
+  console.log(data)
 }
 
 
@@ -38,9 +42,11 @@ const navigate = useNavigate()
 const handleBuy = async () =>{
 
   const importeTotal = totalPrice();
+  const values = getValues()
   
-  const orden = ordenGenerada(nombre, email, telefono, direccion ,cart, importeTotal);
+  const orden = ordenGenerada(values.nombre, values.email, values.telefono, values.direccion,cart, importeTotal);
   
+ 
   console.log(orden)
   navigate('/')
   
@@ -56,113 +62,105 @@ const handleBuy = async () =>{
   
   
   
-  // Actualizar stock
   
-  cart.forEach( async (productoEnCarrito) => {
+    // Actualizar stock
   
-    //Accedemos a la referencia del product
+    cart.forEach( async (productoEnCarrito) => {
   
-    const productRef = doc(db, "products", productoEnCarrito.id);
-  
-    //Snapshot, llamando firebase
-  
-    const productSnap = await getDoc(productRef);
-  
-    //snapshot.data devuelve la informacion del documento a actualizar
-  
-    await updateDoc(productRef, {
-  
-      stock: productSnap.data().stock - productoEnCarrito.quantity,
-  
-      
-  
-    })
-  
-  
-  
+      //Accedemos a la referencia del product
     
-  
-  });
-  
-  
-  Swal.fire({
-    position: 'center',
-    icon: 'success',
-    title: `Orden generada con ID: ${docRef.id}`,
-    showConfirmButton: false,
-    timer: 3500
-  })
-  
-  
-  
-  clearCart()
-  
-  
-  
-  }
+      const productRef = doc(db, "products", productoEnCarrito.id);
+    
+      //Snapshot, llamando firebase
+    
+      const productSnap = await getDoc(productRef);
+    
+      //snapshot.data devuelve la informacion del documento a actualizar
+    
+      await updateDoc(productRef, {
+    
+        stock: productSnap.data().stock - productoEnCarrito.quantity,
+    
+        
+    
+      })
+    
+    
+    
+      
+    
+    });
+    
+    
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: `Orden generada con ID: ${docRef.id}`,
+      showConfirmButton: false,
+      timer: 3500
+    })
+    
+    
+    
+    clearCart()
+    
+    
+    
+    }
   
 
 return (
-    <>
-    <form onSubmit={handleSubmit} className="row formulario">
-      <div className="col-md-2">
-        <input 
-        
-        placeholder='Nombre'
-        id='nombre'
-        name='nombre'
-        onChange={event => setNombre(event.target.value)} 
-        value={nombre}
-        className='form-control'
-        />
-        
-      </div>
+   <>
+   <h2 className='checautero'>Checkout</h2>
+ <div className="formuleta">
+ 
+  <form onSubmit={handleSubmit(onSubmit)}>
+  <div>
+                <label>Nombre</label>
+                <input type="text" 
+                
+              
+                {...register('nombre', {
+                    required: true,
+                    maxLength: 10
+                })} />
+                {errors.nombre?.type === 'required' && <p>El campo nombre es requerido</p>}
+                {errors.nombre?.type === 'maxLength' && <p>El campo nombre debe tener menos de 10 caracteres</p>}
+            </div>
+    <div>
+    <label>Direccion</label>
+    <input type="text" {...register('Direccion')} />
+    </div>
+    <div>
+                <label>Edad</label>
+                <input type="text" {...register('edad', {
+                    validate: edadValidator
+                })} />
+                {errors.edad && <p>La edad debe estar entre 18 y 65</p>}
+            </div>
+    <div>
+                <label>Email</label>
+                <input type="text" {...register('email', {
+                    pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
+                    required: true
+                })} />
+                {errors.email?.type === 'pattern' && <p>El formato del email es incorrecto</p>}
+            </div>
+          
+               
+               <div>
+            <label >telefono</label>
+            <input type="number" {...register('telefono', {
+              required: true
+            })} />
+              
+            </div> 
+           
 
-      <div className="col-md-2">
-        <input 
-        placeholder='email'
-        id='email'
-        name='email'
-        onChange={event => setEmail(event.target.value)} 
-        value={email}
-        className='form-control'
-        
-/>
-        
-      </div>
-   
-   
-      <div className="col-md-2">
-        <input 
-        placeholder='telefono'
-        id='telefono'
-        name='telefono'
-        onChange={event => setTelefono(event.target.value)} 
-        value={telefono}
-        className='form-control'
-        type='number'/>
-        
-      
-      </div>
-
-      <div className="col-md-2">
-        <input 
-        placeholder='direccion'
-        id='direccion'
-        name='direccion'
-        onChange={event => setDireccion(event.target.value)} 
-        value={direccion}
-        className='form-control'/>
-      
-      </div>
-   
-   <div className='col-md-2'> <button type='submit' onClick={handleBuy} className='btn btn-primary'>Confirmar compra</button></div>
-  
-   
-  
-   
-    </form>
-     </>
+    <button  className='botoncito btn btn-primary' type='submit' onClick={handleSubmit(handleBuy)}>Enviar</button>
+  </form>
+  </div>
+  </>
  
   )
 }
