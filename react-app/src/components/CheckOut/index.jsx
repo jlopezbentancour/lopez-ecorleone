@@ -153,7 +153,7 @@ return (
             <input type="number" {...register('telefono', {
               required: true
             })} />
-               {errors.nombre?.type === 'required' && <p>El campo nombre es requerido</p>}
+               {errors.telefono?.type === 'required' && <p>El campo nombre es requerido</p>}
             </div> 
            
 
